@@ -1,0 +1,22 @@
+fs_high = 8000;   % High sampling rate (Hz)
+fs_low = 4000;    % Low sampling rate (Hz)
+f_signal = 3000;  % Frequency of the sine wave (Hz)
+t_high = 0:1/fs_high:0.01;  % Time vector for high sampling rate
+t_low = 0:1/fs_low:0.01;    % Time vector for low sampling rate
+
+signal_high = sin(2*pi*f_signal*t_high);  % Signal sampled at high rate
+signal_low = sin(2*pi*f_signal*t_low);    % Signal sampled at low rate
+
+% Plotting
+figure;
+subplot(2,1,1);
+stem(t_high, signal_high, 'b'); 
+title('Sampling at 8,000 Hz (No Aliasing)');
+xlabel('Time (s)');
+ylabel('Amplitude');
+
+subplot(2,1,2);
+stem(t_low, signal_low, 'r'); 
+title('Sampling at 4,000 Hz (Aliasing)');
+xlabel('Time (s)');
+ylabel('Amplitude');
